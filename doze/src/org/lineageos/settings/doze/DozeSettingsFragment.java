@@ -110,7 +110,17 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        Utils.enableGesture(getActivity(), preference.getKey(), (Boolean) newValue);
+        final String key = preference.getKey();
+        final boolean value = (Boolean) newValue;
+        if (Utils.GESTURE_PICK_UP_KEY.equals(key)) {
+            mPickUpPreference.setChecked(value);
+        } else if (Utils.GESTURE_HAND_WAVE_KEY.equals(key)) {
+            mHandwavePreference.setChecked(value);
+        } else if (Utils.GESTURE_POCKET_KEY.equals(key)) {
+            mPocketPreference.setChecked(value);
+        } else {
+            return false;
+        }
         Utils.checkDozeService(getActivity());
         return true;
     }
@@ -136,7 +146,7 @@ public class DozeSettingsFragment extends PreferenceFragment implements OnPrefer
         return false;
     }
 
-    private static class HelpDialogFragment extends DialogFragment {
+    public static class HelpDialogFragment extends DialogFragment {
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return new AlertDialog.Builder(getActivity())
