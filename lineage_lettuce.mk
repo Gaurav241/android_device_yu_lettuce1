@@ -13,18 +13,23 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/yu/lettuce/full_lettuce.mk)
-
-# Inherit some common LineageOS stuff.
+# Inherit some common ROMs stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
 
-PRODUCT_NAME := lineage_lettuce
-BOARD_VENDOR := yu
+# Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := lettuce
+PRODUCT_NAME := lineage_lettuce
+PRODUCT_BRAND := YU
+PRODUCT_MODEL := YU5010
+PRODUCT_MANUFACTURER := YU
 
+# Must define boot animation
+TARGET_BOOT_ANIMATION_RES := 720
+
+# Miscs stuffs
 PRODUCT_GMS_CLIENTID_BASE := android-micromax
 
 PRODUCT_BUILD_PROP_OVERRIDES += \

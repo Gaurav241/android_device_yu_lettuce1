@@ -1,1 +1,1 @@
-type touchpanel_sysfs, fs_type, sysfs_type;
+type proc_kernel_sched, touchpanel_sysfs, fs_type, sysfs_type;
